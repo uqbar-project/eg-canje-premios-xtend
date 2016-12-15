@@ -4,6 +4,7 @@
 <img src="images/customer.png" height="180px" width="180px"/>
 
 ## Dominio
+Existen clientes que pueden canjear puntos de compra por premios, mientras haya suficiente stock.
 
 ## Objetivo
 
