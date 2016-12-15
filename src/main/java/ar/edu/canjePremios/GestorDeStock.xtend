@@ -12,7 +12,7 @@ class GestorDeStock {
 
 	def actualizarStock(Premio unPremio) {
 
-		/////Este armar�a la query con los parametros necesarios para 
+		/////Este armaria la query con los parametros necesarios para 
 		////llamar al sqlDBConnector
 		try {
 
