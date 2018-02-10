@@ -7,4 +7,9 @@ class PremioNoDisponible extends Premio {
 	new(int unValor, String unaDesc, int popularidad) {
 		super(unValor, unaDesc, popularidad)
 	}
+	
+	override estaDisponible() {
+		false
+	}
+	
 }
