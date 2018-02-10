@@ -4,7 +4,7 @@ import java.sql.SQLException
 
 class SqlDBConnector {
 	///Este se conectar�a con la base
-	def query(Premio unPremio){
+	def void query(Premio unPremio){
 		//obtiene la conexion
 		obtenerConexion()
 		
