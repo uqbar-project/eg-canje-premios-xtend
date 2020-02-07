@@ -3,19 +3,17 @@ package ar.edu.canjePremios
 import java.sql.SQLException
 
 class SqlDBConnector {
-	///Este se conectar�a con la base
+	
+	// Este se conectaría con la base para determinar si está disponible
 	def void query(Premio unPremio){
-		//obtiene la conexion
 		obtenerConexion()
-		
-		//Envia el pedido 
-		//En realidad la base genera un raiserror
 		if (!unPremio.estaDisponible) {
+			// TODO: Esperar que haya un stored procedure en la base que tire una excepción
 			throw new SQLException
 		}
 	}
 	
 	def obtenerConexion(){
-		///Codigo SQL
+		// TODO: Código SQL
 	}
 }

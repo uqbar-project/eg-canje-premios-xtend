@@ -2,37 +2,46 @@ package ar.edu.canjePremios
 
 import ar.edu.canjePremios.excepciones.NoTienePuntosSuficientesException
 import ar.edu.canjePremios.mock.PremioNoDisponible
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 
+import static org.junit.jupiter.api.Assertions.assertEquals
+import static org.junit.jupiter.api.Assertions.assertThrows
+
+@DisplayName("Dado un cliente que tiene disponible ciertos puntos")
 class CanjearTest {
 	
-	Cliente clienteQueTiene_100_Puntos
+	Cliente cliente
 
-	@Before
+	@BeforeEach
 	def void setup() {
-		clienteQueTiene_100_Puntos = new Cliente(100)
+		cliente = new Cliente(100)
 	}
 
 	@Test
+	@DisplayName("puede canjear exitosamente un premio disponible al que puede acceder y se restan los puntos acumulados")
 	def void canjearUnPremioExitosamente() {
-		val premioQueVale_50_Puntos = new Premio(50, "remera", 0)
-		clienteQueTiene_100_Puntos.canjearPremio(premioQueVale_50_Puntos)
-		Assert.assertEquals(clienteQueTiene_100_Puntos.puntosAcum, 50)
-	}
-
-	@Test(expected = typeof(NoTienePuntosSuficientesException))
-	def void intentarCanjearUnPremioSinLosPuntosSuficientes() {
-		val premioQueVale_150_Puntos = new Premio(150, "pantalon", 0)
-		clienteQueTiene_100_Puntos.canjearPremio(premioQueVale_150_Puntos)
+		val premioCanjeable = new Premio(50, "remera", 0)
+		cliente.canjearPremio(premioCanjeable)
+		assertEquals(cliente.puntosAcumulados, 50)
 	}
 
 	@Test
+	@DisplayName("no puede canjear un premio disponible que requiere más puntos (el cliente queda con los mismos puntos)")
+	def void intentarCanjearUnPremioSinLosPuntosSuficientes() {
+		val premioQueRequiereMasPuntos = new Premio(150, "pantalon", 0)
+		assertThrows(NoTienePuntosSuficientesException, [ cliente.canjearPremio(premioQueRequiereMasPuntos) ])
+		assertEquals(cliente.puntosAcumulados, 100) 
+	}
+
+	@Test
+	@DisplayName("si intenta cambiar un premio que no está disponible se agrega a la wishlist del cliente")
 	def void intentarCanjearUnPremioNoDisponibleYQueSeAgregueALaWishList() {
+		assertEquals(cliente.listaDeseos.size, 0)
 		val premioNoDisponible = new PremioNoDisponible(50, "buzo", 10)
-		clienteQueTiene_100_Puntos.canjearPremio(premioNoDisponible)
-		Assert.assertEquals(clienteQueTiene_100_Puntos.listaDeseos.size, 1)
+		cliente.canjearPremio(premioNoDisponible)
+		assertEquals(cliente.listaDeseos.size, 1)
 	}
 	
 }

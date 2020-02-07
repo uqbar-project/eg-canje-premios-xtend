@@ -6,20 +6,16 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 class Cliente {
 
-	@Accessors var int puntosAcum
-	var listaDeseos = newArrayList
+	@Accessors var int puntosAcumulados
+	@Accessors(PUBLIC_GETTER) val listaDeseos = newArrayList
 
 	new(int puntos) {
-		this.puntosAcum = puntos
-	}
-
-	def getListaDeseos() {
-		listaDeseos
+		this.puntosAcumulados = puntos
 	}
 
 	def restarPuntos(Premio unPremio) {
 		this.validarPuntosSuficientes(unPremio)
-		puntosAcum = puntosAcum - unPremio.valor
+		puntosAcumulados = puntosAcumulados - unPremio.valor
 	}
 
 	def canjearPremio(Premio unPremio) {
@@ -38,7 +34,7 @@ class Cliente {
 	}
 
 	def private tienePuntosSuficientesPara(Premio unPremio) {
-		puntosAcum >= unPremio.valor
+		puntosAcumulados >= unPremio.valor
 	}
 
 	def private void agregarAListaDeDeseos(Premio unPremio) {

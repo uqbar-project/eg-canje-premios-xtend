@@ -3,10 +3,10 @@ package ar.edu.canjePremios
 import org.eclipse.xtend.lib.annotations.Accessors
 
 class Premio {
-	@Accessors int valor
+	@Accessors(PUBLIC_GETTER) int valor
 	int nivelPopularidad
 	String descripcion
-	@Accessors GestorDeStock gestorDeStock = new GestorDeStock
+	GestorDeStock gestorDeStock = new GestorDeStock
 	
 	new(int unValor, String unaDesc, int popularidad){
 		this.valor = unValor
@@ -18,8 +18,8 @@ class Premio {
 		descripcion
 	}
 	
-	def setConsultorDeStock(GestorDeStock c){
-		gestorDeStock = c
+	def setConsultorDeStock(GestorDeStock gestorStock){
+		gestorDeStock = gestorStock
 	}
 	
 	def canjear(){
