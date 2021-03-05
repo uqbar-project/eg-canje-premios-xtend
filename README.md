@@ -1,7 +1,7 @@
 
 # Ejemplo Testing con Stubs y Mocks - Canje de premios
 
-[![Build Status](https://travis-ci.org/uqbar-project/eg-canje-premios-xtend.svg?branch=master)](https://travis-ci.org/uqbar-project/eg-canje-premios-xtend) [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-canje-premios-xtend/badge.svg?branch=master&service=github)](https://coveralls.io/github/uqbar-project/eg-canje-premios-xtend?branch=master&service=github)
+[![Build Status](https://travis-ci.com/uqbar-project/eg-canje-premios-xtend.svg?branch=master)](https://travis-ci.com/uqbar-project/eg-canje-premios-xtend) [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-canje-premios-xtend/badge.svg?branch=master&service=github)](https://coveralls.io/github/uqbar-project/eg-canje-premios-xtend?branch=master&service=github)
 
 <img src="images/customer.png" height="180px" width="180px"/>
 
